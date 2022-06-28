@@ -1,12 +1,24 @@
+const buttonContainer = document.createElement('div')
+buttonContainer.classList = 'max-squares'
+const button = document.createElement('button')
+button.textContent = 'Set max squares'
+document.body.appendChild(buttonContainer)
+buttonContainer.appendChild(button)
+document.querySelector('button').addEventListener('click', buttonPress)
+
+
+
 function buttonPress() {
-    let numberOfSquares = Number(prompt('How many squares do you want ?'))
-    if (numberOfSquares > 100) {
+    let numberOfSquares = Number(prompt('How many squares do you want ? (up to 40)'))
+    if (numberOfSquares > 40) {
         buttonPress()
     } else {
         document.querySelector('#main').remove()
         grid(numberOfSquares)
     }
 }
+
+
 
 function grid(numberOfSquares) {
     let container = document.createElement("div");
@@ -29,21 +41,14 @@ function grid(numberOfSquares) {
     document.body.appendChild(container);
 
 
-    let box = document.querySelectorAll('.box')
-    box.forEach((box) => {
-        box.addEventListener('mouseenter', (e) => {
+    let blackBox = document.querySelectorAll('.box')
+    blackBox.forEach((blackBox) => {
+        blackBox.addEventListener('mouseenter', (e) => {
             e.target.style.backgroundColor = 'black'
         })
     })
-
 };
+
 grid(16);
-
-
-
-const button = document.createElement('button')
-button.textContent = 'Set max squares'
-document.body.appendChild(button)
-document.querySelector('button').addEventListener('click', buttonPress)
 
 
